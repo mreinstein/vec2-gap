@@ -28,8 +28,8 @@ when building long-running applications (games and simulations) managing memory 
 
 
 ```javascript
-
-const v = pool.malloc(1, 3) // get a vec2 from the pool, or create one 
+// get a vec2 from the pool, or create one. set it's initial value to [ 1, 3 ]
+const v = pool.malloc(1, 3)
 
 // do stuff with v...
 
