@@ -1,4 +1,5 @@
 import * as vec2 from 'https://cdn.jsdelivr.net/npm/gl-matrix@3.3.0/esm/vec2.js'
+import vec2Truncate from './truncate.js'
 
 
 export default function segmentMidPoint (out, p0, p1) {
