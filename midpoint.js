@@ -6,6 +6,6 @@ export default function segmentMidPoint (out, p0, p1) {
     vec2.subtract(out, p1, p0)
     const halfLen = vec2.distance(p1, p0) / 2
     vec2Truncate(out, out, halfLen)
-    return vec2.add(out, out, seg.points[0])
+    return vec2.add(out, out, p0)
 }
 
