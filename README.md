@@ -10,6 +10,16 @@ that may never be accepted into the library:
 * `pool` provides a `malloc()` and `free(vec2)` interface for memory pooling
 
 
+## midpoint
+
+get the mid point between 2 points
+
+```javascript
+const center = vec2.create()
+midpoint(center, p0, p1) // center === midpoint between p0 and p1
+```
+
+
 ## set-length
 
 Set the exact length of a vector:
