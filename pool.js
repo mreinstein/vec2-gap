@@ -1,4 +1,4 @@
-import * as vec2 from 'https://cdn.jsdelivr.net/npm/gl-matrix@3.3.0/esm/vec2.js'
+import { vec2 } from 'https://cdn.skypack.dev/pin/gl-matrix@v3.3.0-QDHIgv9E54Kj6suUMV0n/mode=imports/optimized/gl-matrix.js'
 
 
 if (!window.poolVec2)
