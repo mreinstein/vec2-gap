@@ -55,7 +55,6 @@ internally, this works by attaching an array to `window.poolVec2` which gives us
 
 NOTE: be careful about double freeing these vectors. We don't currently have any double-free detection logic present.
 
-
 ### singular interface
 
 You can `malloc()` and `free()`  individual vectors:
@@ -89,3 +88,5 @@ Pool.groupFree()
 // p1, p2, p3 are now in the pool and the group is closed
 
 ```
+
+NOTE: be careful about nesting multiple function calls that use `groupMalloc()` and `groupFree()`. This module only maintains 1 group, and there can be some unexpected behavior there. 
