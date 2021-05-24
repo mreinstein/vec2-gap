@@ -46,9 +46,14 @@ truncate(truncated, v, 1.5) // truncated === [ 1.5, 0 ]
 
 ## pool
 
+[![Deno](https://github.com/mreinstein/vec2-gap/actions/workflows/deno.yml/badge.svg?branch=main)](https://github.com/mreinstein/vec2-gap/actions/workflows/deno.yml)
+
 when building long-running applications (games and simulations) managing memory is important, otherwise you invoke the wrath of Javascript's garbage collector.
 
 
+### singular interface
+
+You can `malloc()` and `free()`  individual vectors:
 ```javascript
 // get a vec2 from the pool, or create one. set it's initial value to [ 1, 3 ]
 const v = pool.malloc(1, 3)
@@ -57,6 +62,26 @@ const v = pool.malloc(1, 3)
 
 pool.free(v) // put v back into the pool
 ```
+
+
+### group (bulk) interface
+If you want to `malloc()` and `free()` numerous vectors, you can use group:
+
+```javascript
+Pool.groupMalloc()  // all malloc() calls after this will belong to the group is open
+
+const p1 = Pool.malloc()
+const p2 = Pool.malloc()
+const p3 = Pool.malloc()
+
+// do a bunch of calculations
+
+Pool.groupFree()
+
+// at this point p1, p2, p3 have been cleaned up automatically and the group is closed
+
+```
+
 
 internally, this works by attaching an array to `window.poolVec2` which gives us a singleton pool.
 `malloc()` pops from this array, and `free()` pushes to it.
