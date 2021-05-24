@@ -50,6 +50,11 @@ truncate(truncated, v, 1.5) // truncated === [ 1.5, 0 ]
 
 when building long-running applications (games and simulations) managing memory is important, otherwise you invoke the wrath of Javascript's garbage collector.
 
+internally, this works by attaching an array to `window.poolVec2` which gives us a singleton pool.
+`malloc()` pops from this array, and `free()` pushes to it.
+
+NOTE: be careful about double freeing these vectors. We don't currently have any double-free detection logic present.
+
 
 ### singular interface
 
@@ -68,7 +73,7 @@ pool.free(v) // put v back into the pool
 If you want to `malloc()` and `free()` numerous vectors, you can use group:
 
 ```javascript
-Pool.groupMalloc()  // all malloc() calls after this will belong to the group is open
+Pool.groupMalloc()  // open the group. all malloc() calls after this will be added to the group
 
 const p1 = Pool.malloc()
 const p2 = Pool.malloc()
@@ -81,9 +86,3 @@ Pool.groupFree()
 // at this point p1, p2, p3 have been cleaned up automatically and the group is closed
 
 ```
-
-
-internally, this works by attaching an array to `window.poolVec2` which gives us a singleton pool.
-`malloc()` pops from this array, and `free()` pushes to it.
-
-NOTE: be careful about double freeing these vectors. We don't currently have any double-free detection logic present.
