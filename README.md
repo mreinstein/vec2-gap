@@ -60,12 +60,15 @@ NOTE: be careful about double freeing these vectors. We don't currently have any
 
 You can `malloc()` and `free()`  individual vectors:
 ```javascript
+import Pool from 'https://cdn.jsdelivr.net/gh/mreinstein/vec2-gap/pool.js'
+
+
 // get a vec2 from the pool, or create one. set it's initial value to [ 1, 3 ]
-const v = pool.malloc(1, 3)
+const v = Pool.malloc(1, 3)
 
 // do stuff with v...
 
-pool.free(v) // put v back into the pool
+Pool.free(v) // put v back into the pool
 ```
 
 
