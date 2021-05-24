@@ -83,6 +83,6 @@ const p3 = Pool.malloc()
 
 Pool.groupFree()
 
-// at this point p1, p2, p3 have been cleaned up automatically and the group is closed
+// p1, p2, p3 are now in the pool and the group is closed
 
 ```
