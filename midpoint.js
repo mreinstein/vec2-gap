@@ -1,4 +1,4 @@
-import { vec2 }     from 'https://cdn.skypack.dev/pin/gl-matrix@v3.3.0-QDHIgv9E54Kj6suUMV0n/mode=imports/optimized/gl-matrix.js'
+import { vec2 }     from 'https://cdn.skypack.dev/pin/gl-matrix@v3.4.3-OSmwlRYK5GW1unkuAQkN/mode=imports,min/optimized/gl-matrix.js'
 import vec2Truncate from './truncate.js'
 
 
