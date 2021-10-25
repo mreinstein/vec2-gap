@@ -1,7 +1,8 @@
 import { vec2 } from 'https://cdn.skypack.dev/pin/gl-matrix@v3.4.3-OSmwlRYK5GW1unkuAQkN/mode=imports,min/optimized/gl-matrix.js'
 
 
-// from opensteer
+// these were ported from OpenSteer's Vec3.h file
+
 
 // return component of vector parallel to a unit basis vector
 // (IMPORTANT NOTE: assumes "basis" has unit magnitude (length==1))
