@@ -5,6 +5,8 @@ gl-matrix compatible vec2 functions that haven't been accepted yet
 gl-matrix is a fantastic library for vector and matrix operations, but there are some modules I use regularly
 that may never be accepted into the library:
 
+* `midpoint` get the point between 2 point
+* `perpendicular-component` get the component of vector perpendicular to a unit basis vector
 * `set-length` set an arbitrary length of a 2d vector
 * `truncate` ensure that a 2d vector is not longer than a given length
 * `pool` provides a `malloc()` and `free(vec2)` interface for memory pooling
@@ -17,6 +19,25 @@ get the mid point between 2 points
 ```javascript
 const center = vec2.create()
 midpoint(center, p0, p1) // center === midpoint between p0 and p1
+```
+
+
+## perpendicular-component
+
+determine the component of a source vector that is perpendicular to another vector (basis)
+
+TODO: a digram here would really help clarify what this function does
+
+```javascript
+// basis must be a unit vector
+const basis = vec2.create(1, 0)
+
+const source = vec2.create(50, 32)
+
+const perp = vec2.create()
+
+// find the portion of "source" that is perpendicular to "basis"
+perpendicularComponent(perp, basis, source)
 ```
 
 
@@ -34,13 +55,16 @@ setLength(elongated, v, 5) // elongated === [ 5, 0 ]
 
 ## truncate
 
-Set the exact length of a vector:
+Limit the length of a vector when it exceeds a specific value
 
 ```javascript
 const v = vec2.create(2, 0)
 
 const truncated = vec2.create()
-truncate(truncated, v, 1.5) // truncated === [ 1.5, 0 ]
+truncate(truncated, v, 1.5) // vec2.length(truncated) === 1.5
+
+// has no effect, because  vec2.length(truncated) is 1.5, which is less than 2.0
+trucate(truncated, truncate, 2.0)
 ```
 
 
