@@ -67,6 +67,23 @@ truncate(truncated, v, 1.5) // vec2.length(truncated) === 1.5
 trucate(truncated, truncate, 2.0)
 ```
 
+## get-cardinal-direction
+determine what cardinal direction the target is in relative to a source position. (north of, west of, northeast of, etc.)
+
+```javascript
+const source = [ 0, 0]
+const resolution = 4
+
+// prints "north" because [0, -100] is north of the source
+console.log(getCardinalDirection([ 0, -100 ], source, resolution)
+
+console.log(getCardinalDirection([ 0, 100 ], source, resolution)  // prints "south"
+console.log(getCardinalDirection([ 100, 0 ], source, resolution)  // prints "east"
+console.log(getCardinalDirection([ -100, 0 ], source, resolution)  // prints "west"
+```
+
+`resolution` should be `4` or `8`, which corresponds to `[ 'north', 'east', 'south', 'west' ]` and `[ southeast', south', 'southwest', 'west', 'northwest', 'north', 'northeast', 'northeast' ]` depending on how fine-grained of a result you want.
+
 
 ## pool
 
