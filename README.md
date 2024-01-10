@@ -9,7 +9,6 @@ that may never be accepted into the library:
 * `perpendicular-component` get the component of vector perpendicular to a unit basis vector
 * `set-length` set an arbitrary length of a 2d vector
 * `truncate` ensure that a 2d vector is not longer than a given length
-* `pool` provides a `malloc()` and `free(vec2)` interface for memory pooling
 
 
 ## midpoint
@@ -83,51 +82,3 @@ console.log(getCardinalDirection([ -100, 0 ], source, resolution)  // prints "we
 ```
 
 `resolution` should be `4` or `8`, which corresponds to `[ 'north', 'east', 'south', 'west' ]` and `[ southeast', south', 'southwest', 'west', 'northwest', 'north', 'northeast', 'northeast' ]` depending on how fine-grained of a result you want.
-
-
-## pool
-
-[![Deno](https://github.com/mreinstein/vec2-gap/actions/workflows/deno.yml/badge.svg?branch=main)](https://github.com/mreinstein/vec2-gap/actions/workflows/deno.yml)
-
-when building long-running applications (games and simulations) managing memory is important, otherwise you invoke the wrath of Javascript's garbage collector.
-
-internally, this works by attaching an array to `window.poolVec2` which gives us a singleton pool.
-`malloc()` pops from this array, and `free()` pushes to it.
-
-NOTE: be careful about double freeing these vectors. We don't currently have any double-free detection logic present.
-
-### singular interface
-
-You can `malloc()` and `free()`  individual vectors:
-```javascript
-import Pool from 'https://cdn.jsdelivr.net/gh/mreinstein/vec2-gap/pool.js'
-
-
-// get a vec2 from the pool, or create one. set it's initial value to [ 1, 3 ]
-const v = Pool.malloc(1, 3)
-
-// do stuff with v...
-
-Pool.free(v) // put v back into the pool
-```
-
-
-### group (bulk) interface
-If you want to `malloc()` and `free()` numerous vectors, you can use group:
-
-```javascript
-Pool.groupMalloc()  // open the group. all malloc() calls after this will be added to the group
-
-const p1 = Pool.malloc()
-const p2 = Pool.malloc()
-const p3 = Pool.malloc()
-
-// do a bunch of calculations
-
-Pool.groupFree()
-
-// p1, p2, p3 are now in the pool and the group is closed
-
-```
-
-NOTE: be careful about nesting multiple function calls that use `groupMalloc()` and `groupFree()`. This module only maintains 1 group, and there can be some unexpected behavior there. 
