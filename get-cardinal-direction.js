@@ -1,4 +1,4 @@
-import { vec2 } from 'https://cdn.skypack.dev/pin/gl-matrix@v3.4.3-OSmwlRYK5GW1unkuAQkN/mode=imports,min/optimized/gl-matrix.js'
+import { vec2 } from 'https://wgpu-matrix.org/dist/3.x/wgpu-matrix.module.js'
 
 
 const delta = vec2.create()
@@ -19,7 +19,7 @@ const lookup = {
 // determine what cardinal direction the target is in relative to a source position
 // (north of, west of, northeast of, etc.)
 export default function getCardinalDirection (target, source, resolution) {
-    vec2.subtract(delta, target, source)
+    vec2.subtract(target, source, delta)
     const angle = Math.atan2(delta[1], delta[0])  // (radians)
     const absAngle = Math.abs(angle)
 
