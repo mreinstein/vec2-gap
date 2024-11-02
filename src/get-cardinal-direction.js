@@ -1,4 +1,4 @@
-import { vec2 } from 'https://wgpu-matrix.org/dist/3.x/wgpu-matrix.module.js'
+import { vec2 } from 'wgpu-matrix'
 
 
 const delta = vec2.create()

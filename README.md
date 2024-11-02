@@ -16,6 +16,8 @@ that may never be accepted into the library:
 get the mid point between 2 points
 
 ```javascript
+import { midpoint } from '@footgun/vec2-gap'
+
 const center = vec2.create()
 midpoint(center, p0, p1) // center === midpoint between p0 and p1
 ```
@@ -28,6 +30,8 @@ determine the component of a source vector that is perpendicular to another vect
 TODO: a digram here would really help clarify what this function does
 
 ```javascript
+import { perpendicularComponent } from '@footgun/vec2-gap'
+
 // basis must be a unit vector
 const basis = vec2.create(1, 0)
 
@@ -45,6 +49,8 @@ perpendicularComponent(perp, basis, source)
 Set the exact length of a vector:
 
 ```javascript
+import { setLength } from '@footgun/vec2-gap'
+
 const v = vec2.create(2, 0)
 
 const elongated = vec2.create()
@@ -57,6 +63,8 @@ setLength(elongated, v, 5) // elongated === [ 5, 0 ]
 Limit the length of a vector when it exceeds a specific value
 
 ```javascript
+import { truncate } from '@footgun/vec2-gap'
+
 const v = vec2.create(2, 0)
 
 const truncated = vec2.create()
@@ -70,6 +78,8 @@ trucate(truncated, truncate, 2.0)
 determine what cardinal direction the target is in relative to a source position. (north of, west of, northeast of, etc.)
 
 ```javascript
+import { getCardinalDirection } from '@footgun/vec2-gap'
+
 const source = [ 0, 0]
 const resolution = 4
 

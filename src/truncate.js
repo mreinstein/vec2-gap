@@ -1,5 +1,5 @@
 import setLength from './set-length.js'
-import { vec2 }  from 'https://wgpu-matrix.org/dist/3.x/wgpu-matrix.module.js'
+import { vec2 }  from 'wgpu-matrix'
 
 
 export default function truncate (out, inp, maxLength) {
