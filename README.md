@@ -80,7 +80,7 @@ determine what cardinal direction the target is in relative to a source position
 ```javascript
 import { getCardinalDirection } from '@footgun/vec2-gap'
 
-const source = [ 0, 0]
+const source = [ 0, 0 ]
 const resolution = 4
 
 // prints "north" because [0, -100] is north of the source
@@ -92,3 +92,14 @@ console.log(getCardinalDirection([ -100, 0 ], source, resolution)  // prints "we
 ```
 
 `resolution` should be `4` or `8`, which corresponds to `[ 'north', 'east', 'south', 'west' ]` and `[ southeast', south', 'southwest', 'west', 'northwest', 'north', 'northeast', 'northeast' ]` depending on how fine-grained of a result you want.
+
+
+## project-on-plane
+
+Projects a vector onto a plane defined by a normal orthogonal to the plane.
+```javascript
+import { projectOnPlane } from '@footgun/vec2-gap'
+
+const result = [ 0, 0 ]
+projectOnPlane(result, vector, planeNormal)
+```

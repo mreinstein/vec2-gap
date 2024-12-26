@@ -1,6 +1,6 @@
 {
   "name": "@footgun/vec2-gap",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "vec2 functions missing from current matrix/vec libraries\"",
   "main": "vec2-gap.js",
   "type": "module",

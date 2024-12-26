@@ -1,5 +1,6 @@
 export { default as getCardinalDirection }   from './src/get-cardinal-direction.js'
 export { default as midpoint }               from './src/midpoint.js'
 export { default as perpendicularComponent } from './src/perpendicular-component.js'
+export { default as projectOnPlane }         from './src/project-on-plane.js'
 export { default as setLength }              from './src/set-length.js'
 export { default as truncate }               from './src/truncate.js'
